@@ -34,34 +34,3 @@ For weather, news, or other APIs, NAVA fetches the result directly.
 Voice Output 🔊
 Using pyttsx3 (offline), the result is spoken back to the user.
 subprocess can also be used to open web pages, applications, or files if required.
-
-
-📊 Flow Diagram
-   🎤 User Speaks
-         |
-         v
-  [ Speech Recognition ]
-         |
-         v
- [ Command Analyzer ]
-         |
-  ┌─────────────┬─────────────┬─────────────┐
-  v             v             v             v
-Weather     Web Search     System Cmd     Custom Tasks
-  |             |             |             |
-  v             v             v             v
-API Call   Google Search   subprocess   Module Execution
-             |
-             v
-     Gemini Flash API
-             |
-             v
- [ Refined Response Text ]
-             |
-             v
-[ Text-to-Speech Engine ]
-             |
-             v
-      🔊 Spoken Output
-
-
