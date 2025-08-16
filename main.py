@@ -2,7 +2,8 @@ import google.generativeai as Genai
 import os
 import speech_recognition as sr
 from datetime import datetime
-import pyttsx3 as pt
+import text_to_speech
+import pyttsx3 as pt 
 from googlesearch import search
 import subprocess
 import platform
@@ -27,23 +28,8 @@ def gemini_setup(Api_key):
      # else:
         # response = chat.send_message(message)
         
-def text_to_speech(x):
-     engine = pt.init()
-     voices = engine.getProperty('voices')
-     engine.setProperty('voice',voices[0].id)
-     rate = engine.getProperty('rate')
-     engine.setProperty('rate', 150)
-     engine.say(x)
-     engine.runAndWait()
 
-def text_to_speech_female(x):
-    engine = pt.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice',voices[1].id)
-    rate = engine.getProperty('rate')
-    engine.setProperty('rate', 150)
-    engine.say(x)
-    engine.runAndWait()
+
   
 
 def speech_to_text(): 
@@ -65,13 +51,13 @@ def speech_to_text():
         # Convert speech to text
           user_input = r.recognize_google(audio)
           if(user_input.lower()=="web search"):
-              text_to_speech("Changing to WEB SEARCH Mode")
+              text_to_speech.text_to_speech("Changing to WEB SEARCH Mode")
               web_search.web_searcher()
-              text_to_speech("Changing Mode to Normal")
+              text_to_speech.text_to_speech("Changing Mode to Normal")
 
               continue
           elif(user_input.lower()=="gemini"):
-              text_to_speech("Changing to AI mode")
+              text_to_speech.text_to_speech("Changing to AI mode")
               while True:
                   with sr.Microphone() as source:
                     print("\n🎤 Listening...")
@@ -82,7 +68,7 @@ def speech_to_text():
                       print(f"You said: {user_input}")
                       response = chat.send_message(user_input) 
                       print(f'Gemini: {response.text}')
-                      text_to_speech_female(response.text)
+                      text_to_speech.text_to_speech_female(response.text)
 
                   except sr.UnknownValueError:
                       print("❌ Could not understand audio")
@@ -90,13 +76,13 @@ def speech_to_text():
                       print(f"⚠️ Could not request results from Google Speech Recognition; {e}")
                   # Exit condition
                   if user_input.lower() == "exit":
-                    text_to_speech_female("Changing to Normal Mode")
+                    text_to_speech.text_to_speech_female("Changing to Normal Mode")
                     break
 
           print(f"You said: {user_input}")
           response = chat.send_message(user_input) 
           print(f'Nava: {response.text}')
-          text_to_speech(response.text)
+          text_to_speech.text_to_speech(response.text)
           # Exit condition
           if user_input.lower() == "exit":
               print("Goodbye!")
