@@ -22,5 +22,4 @@ def get_data():
     response = get_api_response(city,unit,language) 
     weather_report(response) 
 
-if __name__ == "__main__" :  
-    get_data()
+get_data()
