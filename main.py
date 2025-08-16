@@ -16,26 +16,14 @@ Api_key = "AIzaSyCZLyFUu730wnfg0oJ7AqEhOmxLwKYci8k"
 
 #Gemini api setup 
 def gemini_setup(Api_key):
-
   Genai.configure(api_key=Api_key) 
   model = Genai.GenerativeModel("gemini-2.0-flash") 
   return model  
-  # chat = model.start_chat()
-  # while True:
-     # message = input("You: ")
-     # if(message.lower() == "exit"): 
-        # break 
-     # else:
-        # response = chat.send_message(message)
-        
-
-
   
 
 def speech_to_text(): 
   file_name = input("Enter name of file txt : ")
   OUTPUT_FILE = f"{file_name}.txt"
-# === SPEECH RECOGNIZER ===
   r = sr.Recognizer()
 
   print("Welcome to N.A.V.A, a Voice-controlled Gemini! Say 'start' to start the conversation. Say 'exit' to quit.")
@@ -48,27 +36,41 @@ def speech_to_text():
           audio = r.listen(source)
 
       try:
-        # Convert speech to text
+          # Convert speech to text
           user_input = r.recognize_google(audio)
+
+          # ✅ Save user input immediately
+          with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+              f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] You: {user_input}\n")
+
           if(user_input.lower()=="web search"):
               text_to_speech.text_to_speech("Changing to WEB SEARCH Mode")
               web_search.web_searcher()
               text_to_speech.text_to_speech("Changing Mode to Normal")
-
               continue
+
           elif(user_input.lower()=="gemini"):
               text_to_speech.text_to_speech("Changing to AI mode")
               while True:
                   with sr.Microphone() as source:
-                    print("\n🎤 Listening...")
-                    r.adjust_for_ambient_noise(source)  # optional for background noise
-                    audio = r.listen(source)
+                      print("\n🎤 Listening...")
+                      r.adjust_for_ambient_noise(source)  # optional for background noise
+                      audio = r.listen(source)
                   try: 
                       user_input = r.recognize_google(audio)
+
+                      # ✅ Save inside Gemini loop too
+                      with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+                          f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] You: {user_input}\n")
+
                       print(f"You said: {user_input}")
                       response = chat.send_message(user_input) 
                       print(f'Gemini: {response.text}')
                       text_to_speech.text_to_speech_female(response.text)
+
+                      # ✅ Save Gemini response
+                      with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+                          f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Gemini: {response.text}\n")
 
                   except sr.UnknownValueError:
                       print("❌ Could not understand audio")
@@ -76,22 +78,22 @@ def speech_to_text():
                       print(f"⚠️ Could not request results from Google Speech Recognition; {e}")
                   # Exit condition
                   if user_input.lower() == "exit":
-                    text_to_speech.text_to_speech_female("Changing to Normal Mode")
-                    break
+                      text_to_speech.text_to_speech_female("Changing to Normal Mode")
+                      break
 
           print(f"You said: {user_input}")
           response = chat.send_message(user_input) 
           print(f'Nava: {response.text}')
           text_to_speech.text_to_speech(response.text)
+
+          # ✅ Save Nava response
+          with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+              f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Nava: {response.text}\n")
+
           # Exit condition
           if user_input.lower() == "exit":
               print("Goodbye!")
               break
-
-        # Send to Gemini and get response
-          with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
-              f.write(
-                  f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]You: {user_input}\n")
 
       except sr.UnknownValueError:
           print("❌ Could not understand audio")
@@ -100,4 +102,4 @@ def speech_to_text():
               f"⚠️ Could not request results from Google Speech Recognition; {e}")
 
 if __name__ == "__main__":
-    speech_to_text() 
+    speech_to_text()
