@@ -11,6 +11,7 @@ import shutil
 import time
 import os
 import web_search
+import weather_predicter
 
 Api_key = "AIzaSyCZLyFUu730wnfg0oJ7AqEhOmxLwKYci8k"
 
@@ -73,9 +74,9 @@ def speech_to_text():
                           f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Gemini: {response.text}\n")
 
                   except sr.UnknownValueError:
-                      print("❌ Could not understand audio")
+                      print(" Could not understand audio")
                   except sr.RequestError as e:
-                      print(f"⚠️ Could not request results from Google Speech Recognition; {e}")
+                      print(f"Could not request results from Google Speech Recognition; {e}")
                   # Exit condition
                   if user_input.lower() == "exit":
                       text_to_speech.text_to_speech_female("Changing to Normal Mode")
@@ -96,10 +97,10 @@ def speech_to_text():
               break
 
       except sr.UnknownValueError:
-          print("❌ Could not understand audio")
+          print(" Could not understand audio")
       except sr.RequestError as e:
           print(
-              f"⚠️ Could not request results from Google Speech Recognition; {e}")
+              f" Could not request results from Google Speech Recognition; {e}")
 
 if __name__ == "__main__":
     speech_to_text()
