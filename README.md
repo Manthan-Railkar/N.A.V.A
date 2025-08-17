@@ -1,4 +1,4 @@
-<img width="612" height="612" alt="image" src="https://github.com/user-attachments/assets/55a78cee-19b4-4fcc-8c68-2798efae476b" />
+<img width="312" height="312" alt="image" src="https://github.com/user-attachments/assets/55a78cee-19b4-4fcc-8c68-2798efae476b" />
 
 
 # 🎙️ N.A.V.A - New Age Voice Assistant 🤖
