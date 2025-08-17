@@ -1,3 +1,5 @@
+<img width="1024" height="1024" alt="Techy Byte Buddies Logo with Connectivity Theme" src="https://github.com/user-attachments/assets/16bef289-b7e5-4691-990e-55977e0a94d0" />
+
 # 🎙️ N.A.V.A - New Age Voice Assistant 🤖
 
 **N.A.V.A (New Age Voice Assistant)** is a Python-powered smart assistant designed to simplify daily tasks using just your **voice**.  
