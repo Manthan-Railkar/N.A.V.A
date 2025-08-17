@@ -1,36 +1,109 @@
-# N.A.V.A - New Age Voice Assistant 🎙️🤖
-NAVA (New Age Voice Assistant) is a Python-powered smart assistant designed to make your daily tasks easier using just your voice.
-It can search the web, predict weather, answer questions, fetch Wikipedia summaries, read out news, and much more — all from your terminal. 
-        ✨ Features
+# 🎙️ N.A.V.A - New Age Voice Assistant 🤖
 
-🎤 Voice Recognition – Understands your voice commands using speech_recognition.
-🗣 Text-to-Speech – Replies back in natural voice with pyttsx3
-🌐 Web Search – Fetches top results from Google
-☁ Weather Updates – Uses OpenWeatherMap API to predict weather for any city. (Work in Progress) 
-📰 Latest Programming News – Uses Web Scraping via BeautifulSoups to get the top news of the programming world. (Work in Progress)
-📂 File Handeling - Capable of performing operations related to file handeling. (Work in Progress) 
+**N.A.V.A (New Age Voice Assistant)** is a Python-powered smart assistant designed to simplify daily tasks using just your **voice**.  
+It can **search the web**, **predict weather**, **fetch Wikipedia summaries**, **read news**, **handle files**, and much more — all from your terminal.
 
+---
 
-🛠 How NAVA Works
-NAVA’s Workflow:
+## ✨ Features
 
-Voice Input 🎤
-The user speaks a command into the microphone.
-speech_recognition converts the audio into text.
+- 🎤 **Voice Recognition** – Understands commands using `speech_recognition`
+- 🗣 **Text-to-Speech** – Natural voice responses with `pyttsx3`
+- 🌐 **Web Search** – Fetches top results from Google
+- ☁ **Weather Updates** – Predict weather using **OpenWeatherMap API**
+- 📰 **Programming News** – Get latest tech updates via **BeautifulSoup Web Scraping** _(Work in Progress)_
+- 📂 **File Handling** – Perform basic file operations _(Work in Progress)_
+- 🤖 **AI-Powered Answers** – Uses **Gemini Flash API** to refine and enhance responses
 
-Command Analysis 🧠
-The recognized text is checked against predefined keywords and actions.
-If the command is a web search, NAVA initiates a Google search query.
-If it’s a system command, NAVA uses subprocess to execute it.
+---
 
-Information Retrieval 🌐
-NAVA sends the search query to Google Search and collects relevant results.
-These results are passed to Gemini Flash API, which processes and refines the answer for clarity and accuracy.
+## 🛠 How N.A.V.A Works
 
-Response Creation 📄
-The Gemini API’s refined text is formatted for output.
-For weather, news, or other APIs, NAVA fetches the result directly.
+1. **Voice Input 🎤**
 
-Voice Output 🔊
-Using pyttsx3 (offline), the result is spoken back to the user.
-subprocess can also be used to open web pages, applications, or files if required.
+   - Speak a command into the microphone
+   - `speech_recognition` converts speech → text
+
+2. **Command Analysis 🧠**
+
+   - Text is matched against predefined commands
+   - Web queries → Google Search
+   - System commands → `subprocess` execution
+
+3. **Information Retrieval 🌐**
+
+   - Google results + APIs (Weather, News, Wikipedia)
+   - Refined answers via **Gemini Flash API**
+
+4. **Response Creation 📄**
+
+   - API results are structured for clarity
+   - Supports multiple data sources
+
+5. **Voice Output 🔊**
+   - Results are spoken aloud via `pyttsx3`
+   - Optionally open apps/files/webpages via `subprocess`
+
+---
+
+## 🛠️ Tech Stack
+
+**Language:** Python 3.9+
+
+**Core Libraries & APIs**
+
+- `google-generativeai` → Gemini API integration
+- `speech_recognition` → Convert speech → text
+- `pyttsx3` → Offline text-to-speech
+- `googlesearch-python` → Google search results
+- `datetime` → Logging & timestamps
+- `subprocess`, `platform`, `shutil` → System interaction
+- Custom modules → `web_search`, `weather_predicter`, `text_to_speech`
+
+---
+
+## 🔑 API Keys Setup
+
+N.A.V.A requires a **Gemini API key** (Google Generative AI).
+
+### 👉 Steps to Get a Gemini API Key:
+
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click **“Create API Key”**
+4. Copy the key and store it securely
+
+## 📦 Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/NAVA.git
+   cd NAVA
+   ```
+2. **Install Dependencies**
+   pip install -r requirements.txt
+3. **ADD GEMINI API KEY**
+   Add your api key in the Api_key variable
+
+**WE RECOMMEND YOU TO CREATE A '.env' file**
+
+## 🔑 Mode Switch Keywords
+
+N.A.V.A. listens for specific **keywords** to decide what mode or task to execute.  
+⚠️ Since this project is still in active development, **some keywords may not work yet or are partially functional.**
+
+| 🗝️ Keyword       | 🚀 Mode / Action Triggered                                                    | Status         |
+| ---------------- | ----------------------------------------------------------------------------- | -------------- |
+| **"weather"**    | Switches to Weather Mode 🌦 – Fetches and reads out weather info for a city.   | ✅ Working     |
+| **"web search"** | Switches to Web Search Mode 🔍 – Performs a Google search using Gemini API.   | ✅ Working     |
+| **"news"**       | Switches to News Mode 📰 – Reads the latest programming/tech news.            | ⚠️ In Progress |
+| **"file"**       | Switches to File Handling Mode 📂 – Supports file create/read/delete actions. | ⚠️ In Progress |
+| **"time"**       | Switches to Time Mode ⏰ – Tells the current system time.                     | ⚠️ In Progress |
+| **"date"**       | Switches to Date Mode 📅 – Tells today’s date.                                | ⚠️ In Progress |
+| **"exit"**       | Ends the session and closes N.A.V.A ❌.                                       | ✅ Working     |
+
+👉 Example commands after switching modes:
+
+- `"weather in Mumbai"`
+- `"search Python projects on GitHub"`
+- `"file create notes.txt"`

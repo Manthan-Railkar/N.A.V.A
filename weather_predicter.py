@@ -1,26 +1,33 @@
-import requests 
+import requests
 
-def weather_report(response): 
-    data = response.json() 
-    w_r = data['weather'][0]["main"]
-    desc = data['weather'][0]["description"]
-    temp = data['main']['temp']
-    print(w_r)
-    print(desc)
-    print(temp)
+API_KEY = "c9451e57162ef769db79f5a47916bd93"  # move key here for clarity
 
-def get_api_response(city,unit,language):
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=c9451e57162ef769db79f5a47916bd93&units={unit}&lang={language}'
-    res = requests.get(url)
-    return res 
 
-def get_data(): 
-    city = input("Enter the city name to get the weather report :") 
-    unit = input("Enter the units in which you want the report: ")
-    language = input("Enter your preferred language code as per: ")
+def weather_report(data):
+    try:
+        if "weather" in data and "main" in data:
+            w_r = data['weather'][0]["main"]
+            desc = data['weather'][0]["description"]
+            temp = data['main']['temp']
+            city = data.get("name", "Unknown City")
+            return f"The weather in {city} is {w_r.lower()} ({desc}), with a temperature of {temp}°C."
+        elif "message" in data:
+            # Handles errors like {"cod":"404","message":"city not found"}
+            return f"Weather API error: {data['message']}"
+        else:
+            return "Could not fetch weather data. Please try again."
+    except Exception as e:
+        return f"Error processing weather data: {str(e)}"
 
-    response = get_api_response(city,unit,language) 
-    weather_report(response) 
 
-if __name__ == "__main__" :  
-    get_data()
+def get_api_response(city):
+    url = (
+        f'https://api.openweathermap.org/data/2.5/weather?'
+        f'q={city}&appid={API_KEY}&units=metric&lang=en'
+    )
+    return requests.get(url).json()
+
+
+def get_data(city):
+    response = get_api_response(city)
+    return weather_report(response)

@@ -1,0 +1,5 @@
+[2025-08-18 00:06:21] You: weather
+[2025-08-18 00:07:42] Nava: Okay, I can help you with the weather! To give you the most relevant information, I need to know:
+
+*   **Where are you located?** (City, State/Region, or even just a general area like "London" or "Southern California").
+*   **Do you want the current weather, a forecast, or something else?** (e.g., "the forecast for tomorrow," "the weather this weekend," or "a weather alert").

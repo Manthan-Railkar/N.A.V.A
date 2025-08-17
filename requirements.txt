@@ -1,0 +1,21 @@
+# --- Core Dependencies ---
+SpeechRecognition==3.10.0
+pyaudio==0.2.14
+requests==2.31.0
+python-dotenv==1.0.1
+
+# --- Text-to-Speech ---
+pyttsx3==2.90
+gTTS==2.5.1
+
+# --- Google Gemini API ---
+google-generativeai==0.7.2   # newer & stable, supports gemini-2.0 models
+
+# --- Search ---
+googlesearch-python==1.2.3
+
+# --- Platform Specific Helpers ---
+# macOS
+pyobjc==10.1; sys_platform == "darwin"
+# Windows
+pypiwin32==223; sys_platform == "win32"
