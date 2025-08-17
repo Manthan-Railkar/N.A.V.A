@@ -5,18 +5,20 @@ def weather_report(response):
     w_r = data['weather'][0]["main"]
     desc = data['weather'][0]["description"]
     temp = data['main']['temp']
-    return w_r,desc,temp 
+    
+    return desc
+    
 
-def get_api_response(city,unit,language):
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=c9451e57162ef769db79f5a47916bd93&units={unit}&lang={language}'
+def get_api_response(city):
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=c9451e57162ef769db79f5a47916bd93&units=me&lang=en'
     res = requests.get(url)
     return res 
 
 def get_data(city): 
-    city =city 
-    unit ='me'
-    language ='en'
+    city = city
+   
 
-    response = get_api_response(city,unit,language) 
-    weather_report(response) 
+    response = get_api_response(city) 
+    return weather_report(response) 
+    
 
