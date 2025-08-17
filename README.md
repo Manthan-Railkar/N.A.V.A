@@ -1,4 +1,5 @@
-<img width="1024" height="1024" alt="Techy Byte Buddies Logo with Connectivity Theme" src="https://github.com/user-attachments/assets/16bef289-b7e5-4691-990e-55977e0a94d0" />
+<img width="612" height="612" alt="image" src="https://github.com/user-attachments/assets/55a78cee-19b4-4fcc-8c68-2798efae476b" />
+
 
 # 🎙️ N.A.V.A - New Age Voice Assistant 🤖
 
