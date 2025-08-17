@@ -13,7 +13,7 @@ import os
 import web_search
 import weather_predicter
 
-Api_key = "AIzaSyCZLyFUu730wnfg0oJ7AqEhOmxLwKYci8k"
+Api_key = "your_gemini_api_key_here"
 
 #Gemini api setup 
 def gemini_setup(Api_key):
