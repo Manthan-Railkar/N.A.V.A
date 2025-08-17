@@ -15,16 +15,13 @@ def web_searcher():
             print("Exiting web search mode...")
             break
 
-        # Fetch top 2 results (fix for googlesearch-python)
-        try:
-            urls = list(search(query, stop=2))
-            if not urls:
-                print("No results found for your query.")
-                continue
-            url = urls[0]  # open first result
-        except Exception as e:
-            print(f"Error fetching search results: {e}")
-            continue
+    elif device == "darwin":
+        chrome_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        if os.path.exists(chrome_path):
+            subprocess.Popen([chrome_path, "--new-window", url])
+        else:
+            raise FileNotFoundError(
+                "Chrome not found at expected path on macOS.")
 
         device = platform.system().lower()
 

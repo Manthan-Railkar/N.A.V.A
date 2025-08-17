@@ -28,7 +28,7 @@ def text_to_speech(text):
         print("[INFO] Using gTTS fallback...")
         tts = gTTS(text=text, lang="en")
         tts.save("tts_output.mp3")
-        if platform.system() == "Darwin":  # macOS
+        if platform.system() == "Darwin":  
             os.system("afplay tts_output.mp3")
         elif platform.system() == "Windows":
             os.system("start tts_output.mp3")

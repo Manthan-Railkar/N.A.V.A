@@ -84,9 +84,9 @@ def speech_to_text():
                                 f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Gemini: {response.text}\n")
 
                     except sr.UnknownValueError:
-                        print("❌ Could not understand audio")
+                        print(" Could not understand audio")
                     except sr.RequestError as e:
-                        print(f"❌ Google Speech Recognition error: {e}")
+                        print(f" Google Speech Recognition error: {e}")
 
             # Weather mode
             elif user_input.lower() == "weather":
@@ -112,9 +112,9 @@ def speech_to_text():
                         text_to_speech.text_to_speech(f"Weather: {weather}")
 
                     except sr.UnknownValueError:
-                        print("❌ Could not understand audio")
+                        print("Could not understand audio")
                     except sr.RequestError as e:
-                        print(f"❌ Google Speech Recognition error: {e}")
+                        print(f"Google Speech Recognition error: {e}")
 
             # Normal mode (Gemini chat)
             else:
@@ -127,9 +127,9 @@ def speech_to_text():
                         f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] NAVA: {response.text}\n")
 
         except sr.UnknownValueError:
-            print("❌ Could not understand audio")
+            print("Could not understand audio")
         except sr.RequestError as e:
-            print(f"❌ Google Speech Recognition error: {e}")
+            print(f"Google Speech Recognition error: {e}")
 
 
 if __name__ == "__main__":
