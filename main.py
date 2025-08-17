@@ -23,7 +23,7 @@ def gemini_setup(Api_key):
   
 
 def speech_to_text(): 
-  file_name = input("Enter name of file txt : ")
+  file_name = input("Enter a name for the file to save the conversation : ")
   OUTPUT_FILE = f"{file_name}.txt"
   r = sr.Recognizer()
 
@@ -58,14 +58,14 @@ def speech_to_text():
                       r.adjust_for_ambient_noise(source)  
                       audio = r.listen(source)
                   try: 
-                      user_input = r.recognize_google(audio)
+                      gemini_input = r.recognize_google(audio)
 
                       
                       with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
-                          f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] You: {user_input}\n")
+                          f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] You: {gemini_input}\n")
 
-                      print(f"You said: {user_input}")
-                      response = chat.send_message(user_input) 
+                      print(f"You said: {gemini_input}")
+                      response = chat.send_message(gemini_input) 
                       print(f'Gemini: {response.text}')
                       text_to_speech.text_to_speech_female(response.text)
 
@@ -78,27 +78,33 @@ def speech_to_text():
                   except sr.RequestError as e:
                       print(f"Could not request results from Google Speech Recognition; {e}")
                   # Exit condition
-                  if user_input.lower() == "exit":
+                  if gemini_input.lower() == "exit":
                       text_to_speech.text_to_speech_female("Changing to Normal Mode")
                       break
-          elif(user_input.lower()=="weather report"):
-              text_to_speech.text_to_speech("Tell me the city to give the weather report")
+          elif(user_input.lower()=="weather"):
+              text_to_speech.text_to_speech("Tell me the city to give the weather conditions")
               while True:
                   with sr.Microphone() as source:
                       print("\n🎤 Listening...")
                       r.adjust_for_ambient_noise(source)  
                       audio = r.listen(source) 
                   try:
-                      user_input = r.recognize_google(audio)
+                      weather_input = r.recognize_google(audio)
                       if(user_input.lower()=="exit"):
                           text_to_speech.text_to_speech("Exiting...")
                           break
-                      city,weather,unit = weather_predicter.get_data(user_input.lower())
-                      text_to_speech.text_to_speech(f'City : {city} , Weather : {weather}, {unit}')
+                      weather = weather_predicter.get_data(weather_input.lower())
+                      print(f'NAVA : Weather - {weather}')
+                      text_to_speech.text_to_speech(f' Weather : {weather}')
                   except sr.UnknownValueError:
                       print(" Could not understand audio")
                   except sr.RequestError as e:
                       print(f"Could not request results from Google Speech Recognition; {e}")
+                  if(weather_input.lower()=="exit"):
+                      print("NAVA : Exiting the current mode...")
+                      text_to_speech.text_to_speech("Exiting the current mode...")
+                      break
+        
 
           print(f"You said: {user_input}")
           response = chat.send_message(user_input) 
