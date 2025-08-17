@@ -8,6 +8,7 @@ user_name = "Manthan Railkar"
 file_path = f'C:|Users\\{user_name}\\Desktop'
 def open_dir(dir):
     if os.path.exists(file_path+ f'\\{dir}'):
+        pass 
         
 
 
