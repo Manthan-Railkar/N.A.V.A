@@ -1,7 +1,7 @@
 # N.A.V.A - New Age Voice Assistant 🎙️🤖
 NAVA (New Age Voice Assistant) is a Python-powered smart assistant designed to make your daily tasks easier using just your voice.
 It can search the web, predict weather, answer questions, fetch Wikipedia summaries, read out news, and much more — all from your terminal. 
-        ✨ Features
+           ✨ Features
 
 🎤 Voice Recognition – Understands your voice commands using speech_recognition.
 🗣 Text-to-Speech – Replies back in natural voice with pyttsx3
