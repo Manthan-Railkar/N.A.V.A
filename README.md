@@ -5,6 +5,7 @@ It can **search the web**, **predict weather**, **fetch Wikipedia summaries**, *
 
 ---
 
+**WE ARE WORKING ON THE UI FOR THE PROJECT, PLEASE BE PATIENT>>>>(TILL THEN TRY RUNNING OUR CODE ON THE TERMINAL AND ENJOY :) )**
 ## ✨ Features
 
 - 🎤 **Voice Recognition** – Understands commands using `speech_recognition`
