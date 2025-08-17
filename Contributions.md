@@ -9,3 +9,4 @@ We ❤️ contributions! N.A.V.A. is an evolving project and we welcome your ide
 2. **Clone** your fork  
    ```bash
    git clone https://github.com/<your-username>/NAVA.git
+   
