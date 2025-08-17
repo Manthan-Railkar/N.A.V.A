@@ -24,7 +24,7 @@ def web_searcher():
         else:
             raise FileNotFoundError("Chrome not found at expected path on Windows.")
 
-    elif device == "darwin":  # macOS
+    elif device == "darwin":  
         chrome_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
         if os.path.exists(chrome_path):
             subprocess.Popen([chrome_path, "--new-window", url])
