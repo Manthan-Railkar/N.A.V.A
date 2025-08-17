@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = "c9451e57162ef769db79f5a47916bd93"  # move key here for clarity
+API_KEY = "c9451e57162ef769db79f5a47916bd93"  
 
 
 def weather_report(data):
@@ -12,7 +12,7 @@ def weather_report(data):
             city = data.get("name", "Unknown City")
             return f"The weather in {city} is {w_r.lower()} ({desc}), with a temperature of {temp}°C."
         elif "message" in data:
-            # Handles errors like {"cod":"404","message":"city not found"}
+           \
             return f"Weather API error: {data['message']}"
         else:
             return "Could not fetch weather data. Please try again."
