@@ -33,11 +33,11 @@ def speech_to_text():
   while True:
       with sr.Microphone() as source:
           print("\n🎤 Listening...")
-          r.adjust_for_ambient_noise(source)  # optional for background noise
+          r.adjust_for_ambient_noise(source)  
           audio = r.listen(source)
 
       try:
-          # Convert speech to text
+         
           user_input = r.recognize_google(audio)
 
           
@@ -77,7 +77,7 @@ def speech_to_text():
                       print(" Could not understand audio")
                   except sr.RequestError as e:
                       print(f"Could not request results from Google Speech Recognition; {e}")
-                  # Exit condition
+                 
                   if gemini_input.lower() == "exit":
                       text_to_speech.text_to_speech_female("Changing to Normal Mode")
                       break
@@ -115,7 +115,7 @@ def speech_to_text():
           with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
               f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Nava: {response.text}\n")
 
-          # Exit condition
+          
           if user_input.lower() == "exit":
               print("Goodbye!")
               break
