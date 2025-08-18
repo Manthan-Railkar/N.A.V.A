@@ -1,10 +1,16 @@
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/55a78cee-19b4-4fcc-8c68-2798efae476b" />
+
+
 # 🎙️ N.A.V.A - New Age Voice Assistant 🤖
 
+📊[View Project Presentation (PDF)](docs/NAVA-New-Age-Voice-Assistant.pdf)
+
 **N.A.V.A (New Age Voice Assistant)** is a Python-powered smart assistant designed to simplify daily tasks using just your **voice**.  
-It can **search the web**, **predict weather**, **fetch Wikipedia summaries**, **read news**, **handle files**, and much more — all from your terminal.
+It can **search the web**, **predict weather**, **read news**, **handle files**, and much more — all from your terminal.
 
 ---
 
+**WE ARE WORKING ON THE UI FOR THE PROJECT, PLEASE BE PATIENT>>>>(TILL THEN TRY RUNNING OUR CODE ON THE TERMINAL AND ENJOY :) )**
 ## ✨ Features
 
 - 🎤 **Voice Recognition** – Understands commands using `speech_recognition`
