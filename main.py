@@ -11,7 +11,7 @@ import time
 import web_search
 import weather_predicter
 
-API_KEY = "AIzaSyAu-Shwy0j37HY39WtD9BPOtmum9fJVxGw"
+API_KEY = "gemini_api_key"
 
 
 # Gemini API setup
