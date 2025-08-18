@@ -11,7 +11,7 @@ import time
 import web_search
 import weather_predicter
 
-API_KEY = "gemini_api_key"
+API_KEY = "AIzaSyAu-Shwy0j37HY39WtD9BPOtmum9fJVxGw"
 
 
 # Gemini API setup
@@ -133,4 +133,4 @@ def speech_to_text():
 
 
 if __name__ == "__main__":
-    speech_to_text()
+    speech_to_text() 
