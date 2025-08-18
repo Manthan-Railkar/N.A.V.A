@@ -10,7 +10,6 @@ def web_searcher():
   while True: 
     query = input("What do you need? ")
     if(query.lower()=="exit"):
-        
         break 
     urls = list(search(query, num_results=2))
     url = urls[1]
