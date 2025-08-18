@@ -31,20 +31,17 @@ def text_to_speech(text):
         if platform.system() == "Darwin":  
             os.system("afplay tts_output.mp3")
         elif platform.system() == "Windows":
-            os.system("start tts_output.mp3")
+            os.system("start tts_output.mp3")   
         else:  # Linux
             os.system("mpg123 tts_output.mp3")
 
 
 def text_to_speech_female(text):
     engine = _init_engine()
-    if engine:
-        voices = engine.getProperty("voices")
-        for voice in voices:
-            if "female" in voice.name.lower():
-                engine.setProperty("voice", voice.id)
-                break
-        engine.say(text)
-        engine.runAndWait()
-    else:
-        text_to_speech(text)
+    voices = engine.getProperty("voices")
+    engine.setProperty('voice',voices[1].id)
+    rate = engine.getProperty('rate')
+    engine.setProperty('rate',150)
+    engine.say(text)
+    engine.runAndWait()
+    
